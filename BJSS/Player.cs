@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BJSS
@@ -27,5 +28,10 @@ namespace BJSS
     }
 
     public abstract Card MakeMove(out bool complete);
+
+    public bool HasSevenOfDiamonds()
+    {
+      return _cards.Where(c => c.House == House.eDiamonds && c.Number == Number.eSeven).Count() == 1;
+    }
   }
 }
