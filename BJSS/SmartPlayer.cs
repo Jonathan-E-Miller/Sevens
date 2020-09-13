@@ -43,7 +43,8 @@ namespace BJSS
           List<Card> toKeep = new List<Card>();
           for (int i = matches.Count-1; i >= 0; i--)
           {
-            if (matches[i].Number == Number.eSeven)
+            // If we have a seven but not many other cards in that house, then save it to delay other players.
+            if ( (matches[i].Number == Number.eSeven) && CheckCount(matches[i]) >= 3)
             {
               toKeep.Add(matches[i]);
               matches.RemoveAt(i);
@@ -68,6 +69,11 @@ namespace BJSS
       }
       complete = Cards.Count == 0;
       return card;
+    }
+
+    public int CheckCount(Card card)
+    {
+      return Cards.Where(c => c.House == card.House).Count();
     }
   }
 }
