@@ -8,6 +8,15 @@ namespace BJSS
   {
     private bool _auto;
     private bool _clever;
+    private List<Card> _cards;
+
+    public List<Card> Cards
+    {
+      get
+      {
+        return _cards;
+      }
+    }
 
     /// <summary>
     /// Create a new player
@@ -18,6 +27,7 @@ namespace BJSS
     {
       _auto = auto;
       _clever = clever;
+      _cards = new List<Card>();
     }
 
     /// <summary>

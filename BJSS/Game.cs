@@ -22,10 +22,6 @@ namespace BJSS
         // create a manual player
         new Player(false)
       };
-
-      Deck deck = new Deck();
-      deck.Shuffle();
-      deck.Handout(_players);
     }
 
     /// <summary>
@@ -34,6 +30,13 @@ namespace BJSS
     public void Play()
     {
       throw new NotImplementedException();
+    }
+
+    public void AssignCards()
+    {
+      Deck deck = new Deck();
+      deck.Shuffle();
+      deck.Handout(_players);
     }
   }
 }

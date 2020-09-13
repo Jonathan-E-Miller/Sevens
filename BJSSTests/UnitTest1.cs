@@ -1,5 +1,7 @@
 using BJSS;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BJSSTests
@@ -51,6 +53,40 @@ namespace BJSSTests
       }
 
       Assert.IsFalse(match);
+    }
+
+    [TestCase]
+    public void TestHandOut()
+    {
+      List<Player> players = new List<Player>()
+      {
+        new Player(false),
+        new Player(false),
+        new Player(true)
+      };
+
+      Deck deck = new Deck();
+      deck.Shuffle();
+      deck.Handout(players);
+
+      double numberOfCards = ((double)52) / (double)players.Count;
+
+      if (numberOfCards % 1 != 0)
+      {
+        int[] possibleValues = new int[2];
+        possibleValues[0] = (int)numberOfCards;
+        possibleValues[1] = (int)numberOfCards + 1;
+
+        foreach(Player player in players)
+        {
+          bool match = possibleValues.Contains(player.Cards.Count);
+          Assert.IsTrue(match);
+        }
+      }
+      else
+      {
+        players.ForEach(p => Assert.AreEqual(p.Cards.Count, (int)numberOfCards));
+      }
     }
   }
 }

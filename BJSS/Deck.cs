@@ -8,6 +8,7 @@ namespace BJSS
 {
   public class Deck
   {
+    private const int DECKLEN = 52;
     private Card[] _cards;
 
     public Card[] Cards { get => _cards; }
@@ -41,7 +42,15 @@ namespace BJSS
 
     public void Handout(List<Player> players)
     {
-      throw new NotImplementedException();
+      int cardNumber = 0;
+      int playerInc = 0;
+
+      while (cardNumber < DECKLEN)
+      {
+        int playerN = playerInc++ % players.Count;
+
+        players[playerN].Cards.Add(_cards[cardNumber++]);
+      }
     }
   }
 }
