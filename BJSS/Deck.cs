@@ -27,8 +27,16 @@ namespace BJSS
       int deckIndex = 0;
       foreach (House h in Enum.GetValues(typeof(House)))
       {
+        if (h == House.eInvalid)
+        {
+          continue;
+        }
         foreach (Number n in Enum.GetValues(typeof(Number)))
         {
+          if (n == Number.eInvalid)
+          {
+            continue;
+          }
           _cards[deckIndex++] = new Card(h, n);
         }
       }

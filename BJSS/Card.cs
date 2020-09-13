@@ -11,7 +11,8 @@ namespace BJSS
     eSpades = 0,
     eClubs,
     eHearts,
-    eDiamonds
+    eDiamonds,
+    eInvalid
   }
 
   public enum Number
@@ -28,7 +29,8 @@ namespace BJSS
     eJack,
     eQueen,
     eKing,
-    eAce
+    eAce,
+    eInvalid
   }
   public class Card : IEquatable<Card>
   {

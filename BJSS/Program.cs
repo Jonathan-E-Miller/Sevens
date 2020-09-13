@@ -17,7 +17,7 @@ namespace BJSS
         // create an automated standard player
         new StandardPlayer("Player 2"),
         // create a manual player
-        new StandardPlayer("Player 3")
+        new ManualPlayer("Player 3")
       };
 
       Deck deck = new Deck();
@@ -27,7 +27,7 @@ namespace BJSS
 
       while (!complete)
       {
-        Thread.Sleep(1000);
+        Thread.Sleep(2000);
         complete = game.Update();
         Console.Clear();
         game.Draw();
