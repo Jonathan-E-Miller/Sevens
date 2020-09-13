@@ -57,7 +57,7 @@ namespace BJSS
           while (!cardValid)
           {
             // Request user input
-            Console.WriteLine("Make Your Move... (type \"cards\" to see your cards or \"matches\" to see matches");
+            Console.WriteLine("Make Your Move... (type \"cards\" to see your cards or \"matches\" to see matches)");
             String input = Console.ReadLine();
             
             // Parse the input, will return null if invalid
