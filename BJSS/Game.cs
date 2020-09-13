@@ -22,6 +22,10 @@ namespace BJSS
         // create a manual player
         new Player(false)
       };
+
+      Deck deck = new Deck();
+      deck.Shuffle();
+      deck.Handout(_players);
     }
 
     /// <summary>

@@ -31,6 +31,22 @@ namespace BJSS
   {
     private House _house;
     private Number _number;
+
+    public House House 
+    { 
+      get
+      {
+        return _house;
+      } 
+    }
+
+    public Number Number
+    {
+      get
+      {
+        return _number;
+      }
+    }
     public Card(House house, Number card)
     {
       _house = house;
