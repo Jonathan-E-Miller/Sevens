@@ -51,5 +51,17 @@ namespace BJSS
         players[playerN].Cards.Add(_cards[cardNumber++]);
       }
     }
+
+    public void UpdateCard(Card card)
+    {
+      for (int i = 0; i < _cards.Count(); i++)
+      {
+        if (_cards[i].ToString() == card.ToString())
+        {
+          _cards[i].Played = true;
+          break;
+        }
+      }
+    }
   }
 }

@@ -16,11 +16,11 @@ namespace BJSSTests
       _players = new List<Player>()
       {
         // create a automated smart player
-        new SmartPlayer(),
+        new SmartPlayer("Player 1"),
         // create an automated standard player
-        new StandardPlayer(),
+        new StandardPlayer("Player 2"),
         // create a manual player
-        new ManualPlayer()
+        new ManualPlayer("Player 3")
       };
 
       Deck deck = new Deck();

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BJSS
 {
   public class SmartPlayer : Player
   {
-    public SmartPlayer() : base()
+    public SmartPlayer(string name) : base(name)
     {
 
     }

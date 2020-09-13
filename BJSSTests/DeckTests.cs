@@ -62,9 +62,9 @@ namespace BJSSTests
     {
       List<Player> players = new List<Player>()
       {
-        new ManualPlayer(),
-        new StandardPlayer(),
-        new SmartPlayer()
+        new ManualPlayer("Player 1"),
+        new StandardPlayer("Player 2"),
+        new SmartPlayer("Player 3")
       };
 
       Deck deck = new Deck();
