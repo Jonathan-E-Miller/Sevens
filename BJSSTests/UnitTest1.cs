@@ -21,12 +21,36 @@ namespace BJSSTests
     {
       Deck deck = new Deck();
 
+      if (deck.Cards.Contains(null))
+      {
+        Assert.Fail("Deck contains null elements");
+      }
+
       Card[] cards = deck.Cards;
 
       Card card = cards.ToList().Find(c => c.Number == number && c.House == house);
 
       Assert.IsNotNull(card);
+    }
 
+    [TestCase]
+    public void TestShuffle()
+    {
+      Deck deck = new Deck();
+      Card[] cards = deck.Cards;
+      deck.Shuffle();
+
+      bool match = true;
+      for (int i = 0; i < cards.Length; i++)
+      {
+        if ((cards[i].House != deck.Cards[i].House) && (cards[i].Number != deck.Cards[i].Number))
+        {
+          match = false;
+          break;
+        }
+      }
+
+      Assert.IsFalse(match);
     }
   }
 }

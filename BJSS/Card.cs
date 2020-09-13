@@ -22,6 +22,7 @@ namespace BJSS
     eSeven,
     eEight,
     eNine,
+    eTen,
     eJack,
     eQueen,
     eKing,

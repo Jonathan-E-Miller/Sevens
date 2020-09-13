@@ -35,7 +35,8 @@ namespace BJSS
 
     public void Shuffle()
     {
-      throw new NotImplementedException();
+      Random r = new Random();
+      _cards = _cards.OrderBy(x => r.Next()).ToArray();
     }
 
     public void Handout(List<Player> players)
