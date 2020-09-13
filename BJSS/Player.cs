@@ -9,6 +9,7 @@ namespace BJSS
   {
     private List<Card> _cards;
     private string _name;
+    private string _output;
 
     /// <summary>
     /// Create a new player
@@ -23,7 +24,15 @@ namespace BJSS
 
     public List<Card> Cards { get => _cards; set => _cards = value; }
     public string Name { get => _name; set => _name = value; }
+    public string Output { get => _output; set => _output = value; }
 
     public abstract Card MakeMove(Board currentBoard, out bool complete);
+
+    public string GetPlay()
+    {
+      string toReturn = _output;
+      _output = "";
+      return toReturn;
+    }
   }
 }
