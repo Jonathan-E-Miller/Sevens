@@ -10,14 +10,18 @@ namespace BJSS
   {
     static void Main(string[] args)
     {
+      Console.WriteLine("Enter your name...");
+      string name = Console.ReadLine();
+      Console.Write("\n");
+
       List<Player> players = new List<Player>()
       {
         // create a automated smart player
-        new StandardPlayer("Player 1"),
+        new StandardPlayer("Standard Player"),
         // create an automated standard player
-        new StandardPlayer("Player 2"),
+        new SmartPlayer("Smart Player"),
         // create a manual player
-        new ManualPlayer("Player 3")
+        new ManualPlayer(name)
       };
 
       Deck deck = new Deck();
