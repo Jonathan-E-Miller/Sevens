@@ -7,14 +7,17 @@ namespace BJSS
   public class Player
   {
     private bool _auto;
+    private bool _clever;
 
     /// <summary>
     /// Create a new player
     /// </summary>
     /// <param name="auto">true if controller by the "AI"</param>
-    public Player(bool auto)
+    /// <param name="clever">true if the player should make intelligent moves</param>
+    public Player(bool auto, bool clever=false)
     {
       _auto = auto;
+      _clever = clever;
     }
 
     /// <summary>
