@@ -6,6 +6,9 @@ using System.Text;
 
 namespace BJSS
 {
+  /// <summary>
+  /// Enum to represent the different houses
+  /// </summary>
   public enum House
   {
     eSpades = 0,
@@ -15,6 +18,9 @@ namespace BJSS
     eInvalid
   }
 
+  /// <summary>
+  /// Enum to represent the different numbers
+  /// </summary>
   public enum Number
   {
     eTwo = 2,
@@ -32,28 +38,42 @@ namespace BJSS
     eAce,
     eInvalid
   }
+
   public class Card : IEquatable<Card>
   {
     private House _house;
     private Number _number;
     private bool _played;
 
-
     public bool Played { get => _played; set => _played = value; }
     public House House { get => _house; set => _house = value; }
     public Number Number { get => _number; set => _number = value; }
 
-    public Card(House house, Number card)
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="house">The house the card belongs to</param>
+    /// <param name="number">The number of the card</param>
+    public Card(House house, Number number)
     {
       House = house;
-      Number = card;
+      Number = number;
     }
 
+    /// <summary>
+    /// Implementation of IEquatable interface for easier comparrisons with List<Card>
+    /// </summary>
+    /// <param name="other">The card to compare against</param>
+    /// <returns></returns>
     public bool Equals([AllowNull] Card other)
     {
       return (this.House == other.House && this.Number == other.Number);
     }
 
+    /// <summary>
+    /// Override to string function to return a meaningful string representation of the object
+    /// </summary>
+    /// <returns>8H for eight of hearts</returns>
     public override string ToString()
     {
       StringBuilder stringBuilder = new StringBuilder();

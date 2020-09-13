@@ -13,6 +13,12 @@ namespace BJSS
       _random = new Random();
     }
 
+    /// <summary>
+    /// StandardPlayer Implementation. Gets a list of cards that can be played and selects a random Card.
+    /// </summary>
+    /// <param name="currentBoard">The current state of the board</param>
+    /// <param name="complete">True if all users cards have been used</param>
+    /// <returns></returns>
     public override Card MakeMove(Board currentBoard, out bool complete)
     {
       Card card = null;

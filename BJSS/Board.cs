@@ -30,6 +30,10 @@ namespace BJSS
       };
     }
 
+    /// <summary>
+    /// Check to see if the board is empty
+    /// </summary>
+    /// <returns>True if the board is empty</returns>
     public bool IsEmpty()
     {
       bool isEmpty = true;
@@ -50,21 +54,27 @@ namespace BJSS
     /// <param name="card"></param>
     public void AddCard(Card card)
     {
+      // if this is a new house being played, add the card to the max parameter.
       if (_currentBoard[card.House].Max == null && _currentBoard[card.House].Min == null)
       {
         _currentBoard[card.House].Max = card.Number;
       }
+      // We already have some cards for this house.
       else
       {
+        // get the new number for the card.
         int newValue = (int)card.Number;
 
+        // if the new value is greater than the current maximum update the max value
         if (newValue > (int)_currentBoard[card.House].Max)
         {
           _currentBoard[card.House].Max = card.Number;
         }
-
+        
+        // The minimum value might not yet be set.
         if (!_currentBoard[card.House].Min.HasValue)
         {
+          // as it is not set, we need to check against the max value
           if (newValue < (int)_currentBoard[card.House].Max)
           {
             _currentBoard[card.House].Min = card.Number;
@@ -72,6 +82,7 @@ namespace BJSS
         }
         else
         {
+          // check against the minimum value and update.
           if (newValue < (int)_currentBoard[card.House].Min)
           {
             _currentBoard[card.House].Min = card.Number;

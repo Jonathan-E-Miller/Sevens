@@ -10,10 +10,12 @@ namespace BJSS
   {
     static void Main(string[] args)
     {
+      // Get the name of the Manual player
       Console.WriteLine("Enter your name...");
       string name = Console.ReadLine();
       Console.Write("\n");
 
+      // Create three players
       List<Player> players = new List<Player>()
       {
         // create a automated smart player
@@ -24,11 +26,12 @@ namespace BJSS
         new ManualPlayer(name)
       };
 
+      // Create a card deck and Game.
       Deck deck = new Deck();
       Game game = new Game(deck, players);
 
+      // while we do not have a winner, continue.
       bool complete = false;
-
       while (!complete)
       {
         Thread.Sleep(2000);
