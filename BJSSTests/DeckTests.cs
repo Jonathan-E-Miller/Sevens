@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BJSSTests
 {
-  public class Tests
+  public class DeckTests
   {
     [SetUp]
     public void Setup()
