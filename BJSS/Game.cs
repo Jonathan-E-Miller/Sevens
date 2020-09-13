@@ -6,14 +6,14 @@ namespace BJSS
 {
   public class Game
   {
-    private Card[,] _board;
+    private Board _board;
     private List<Player> _players;
     private int _startPlayerIndex;
 
     public Game()
     {
-      // create a 4x2 array for the 4 houses and current min and max card.
-      _board = new Card[4,2];
+      // create a new board object for our game
+      _board = new Board();
       _players = new List<Player>()
       {
         // create a automated smart player
