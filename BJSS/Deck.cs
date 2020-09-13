@@ -40,14 +40,13 @@ namespace BJSS
       _cards = _cards.OrderBy(x => r.Next()).ToArray();
     }
 
-    public void Handout(List<Player> players)
+    public void Handout(List<Player> players, int startPlayerIndex)
     {
       int cardNumber = 0;
-      int playerInc = 0;
 
       while (cardNumber < DECKLEN)
       {
-        int playerN = playerInc++ % players.Count;
+        int playerN = startPlayerIndex++ % players.Count;
 
         players[playerN].Cards.Add(_cards[cardNumber++]);
       }

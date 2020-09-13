@@ -55,8 +55,10 @@ namespace BJSSTests
       Assert.IsFalse(match);
     }
 
-    [TestCase]
-    public void TestHandOut()
+    [TestCase(0)]
+    [TestCase(1)]
+    [TestCase(2)]
+    public void TestHandOut(int startPlayerIndex)
     {
       List<Player> players = new List<Player>()
       {
@@ -67,7 +69,7 @@ namespace BJSSTests
 
       Deck deck = new Deck();
       deck.Shuffle();
-      deck.Handout(players);
+      deck.Handout(players, startPlayerIndex);
 
       double numberOfCards = ((double)52) / (double)players.Count;
 

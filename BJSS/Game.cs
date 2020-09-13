@@ -6,8 +6,9 @@ namespace BJSS
 {
   public class Game
   {
-    public Card[,] _board;
-    public List<Player> _players;
+    private Card[,] _board;
+    private List<Player> _players;
+    private int _startPlayerIndex;
 
     public Game()
     {
@@ -22,6 +23,7 @@ namespace BJSS
         // create a manual player
         new ManualPlayer()
       };
+      _startPlayerIndex = 0;
     }
 
     /// <summary>
@@ -36,7 +38,8 @@ namespace BJSS
     {
       Deck deck = new Deck();
       deck.Shuffle();
-      deck.Handout(_players);
+      deck.Handout(_players, _startPlayerIndex);
+      _startPlayerIndex++;
     }
   }
 }
