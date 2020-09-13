@@ -1,0 +1,11 @@
+
+BJSS/obj/BJSS.csproj.nuget.dgspec.json
+.vs
+BJSS/bin/Debug/
+BJSS/obj/
+BJSS/obj/AireLogicCLIApp.csproj.nuget.dgspec.json
+
+
+BJSSTests/bin/Debug/
+BJSSTests/obj/
+
