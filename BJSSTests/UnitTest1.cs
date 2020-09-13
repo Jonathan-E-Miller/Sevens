@@ -60,9 +60,9 @@ namespace BJSSTests
     {
       List<Player> players = new List<Player>()
       {
-        new Player(false),
-        new Player(false),
-        new Player(true)
+        new ManualPlayer(),
+        new StandardPlayer(),
+        new SmartPlayer()
       };
 
       Deck deck = new Deck();

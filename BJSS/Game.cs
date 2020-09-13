@@ -16,11 +16,11 @@ namespace BJSS
       _players = new List<Player>()
       {
         // create a automated smart player
-        new Player(true, true),
+        new SmartPlayer(),
         // create an automated standard player
-        new Player(true),
+        new StandardPlayer(),
         // create a manual player
-        new Player(false)
+        new ManualPlayer()
       };
     }
 
