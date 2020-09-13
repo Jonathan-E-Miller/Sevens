@@ -45,9 +45,9 @@ namespace BJSS
           bool cardValid = false;
           while (!cardValid)
           {
-            Console.WriteLine("Make Your Move... (type \"cards\" to see your cards");
+            Console.WriteLine("Make Your Move... (type \"cards\" to see your cards or \"matches\" to see matches");
             String input = Console.ReadLine();
-            Card potentialCard = ParseInput(input);
+            Card potentialCard = ParseInput(input, matches);
 
             if (matches.Contains(potentialCard))
             {
@@ -64,16 +64,26 @@ namespace BJSS
       return card;
     }
 
-    public Card ParseInput(string input)
+    public Card ParseInput(string input, List<Card> matches = null)
     {
       Card card = null;
       bool stillValid = true;
 
+      bool commandReceived = false;
+
       if (input.Equals("cards", StringComparison.CurrentCultureIgnoreCase))
       {
-        PrintCards();
+        PrintCards(Cards);
+        commandReceived = true;
       }
-      else
+
+      if (input.Equals("matches", StringComparison.CurrentCultureIgnoreCase))
+      {
+        PrintCards(matches);
+        commandReceived = true;
+      }
+      
+      if (!commandReceived)
       {
         if (input.Length > 3 || input.Length < 2)
         {
@@ -221,10 +231,10 @@ namespace BJSS
       return house;
     }
 
-    private void PrintCards()
+    private void PrintCards(List<Card> cards)
     {
       Console.WriteLine("Your Cards Are...");
-      foreach (Card card in Cards)
+      foreach (Card card in cards)
       {
         Console.Write(" {0} ", card.ToString());
       }
