@@ -11,7 +11,7 @@ namespace BJSS
 
     }
 
-    public override Card MakeMove(out bool complete)
+    public override Card MakeMove(Board currentBoard, out bool complete)
     {
       throw new NotImplementedException();
     }

@@ -14,7 +14,6 @@ namespace BJSS
         return _currentBoard;
       }
     }
-    
 
     /// <summary>
     /// Create a new intance of our board.
@@ -28,6 +27,20 @@ namespace BJSS
         { House.eHearts, new CurrentState() },
         { House.eSpades, new CurrentState() },
       };
+    }
+
+    public bool IsEmpty()
+    {
+      bool isEmpty = true;
+      foreach (KeyValuePair<House, CurrentState> kvp in _currentBoard)
+      {
+        if ((kvp.Value.Max != null) || (kvp.Value.Min != null))
+        {
+          isEmpty = false;
+          break;
+        }
+      }
+      return isEmpty;
     }
   }
 }

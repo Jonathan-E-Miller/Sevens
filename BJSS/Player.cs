@@ -26,6 +26,6 @@ namespace BJSS
       _cards = new List<Card>();
     }
 
-    public abstract Card MakeMove(out bool complete);
+    public abstract Card MakeMove(Board currentBoard, out bool complete);
   }
 }
