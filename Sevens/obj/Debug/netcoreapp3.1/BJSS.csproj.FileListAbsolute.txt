@@ -1,0 +1,13 @@
+C:\Users\jonny\source\repos\BJSS\BJSS\bin\Debug\netcoreapp3.1\BJSS.exe
+C:\Users\jonny\source\repos\BJSS\BJSS\bin\Debug\netcoreapp3.1\BJSS.deps.json
+C:\Users\jonny\source\repos\BJSS\BJSS\bin\Debug\netcoreapp3.1\BJSS.runtimeconfig.json
+C:\Users\jonny\source\repos\BJSS\BJSS\bin\Debug\netcoreapp3.1\BJSS.runtimeconfig.dev.json
+C:\Users\jonny\source\repos\BJSS\BJSS\bin\Debug\netcoreapp3.1\BJSS.dll
+C:\Users\jonny\source\repos\BJSS\BJSS\bin\Debug\netcoreapp3.1\BJSS.pdb
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.csprojAssemblyReference.cache
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.AssemblyInfoInputs.cache
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.AssemblyInfo.cs
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.csproj.CoreCompileInputs.cache
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.dll
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.pdb
+C:\Users\jonny\source\repos\BJSS\BJSS\obj\Debug\netcoreapp3.1\BJSS.genruntimeconfig.cache
