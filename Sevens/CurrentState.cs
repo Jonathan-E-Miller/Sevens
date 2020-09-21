@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BJSS
+namespace Sevens
 {
   /// <summary>
   /// A simple class to represent the current state of a Card collection on the board.

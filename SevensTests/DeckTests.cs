@@ -1,10 +1,10 @@
-using BJSS;
+using Sevens;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BJSSTests
+namespace SevensTests
 {
   public class DeckTests
   {

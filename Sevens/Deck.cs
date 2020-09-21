@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 
-namespace BJSS
+namespace Sevens
 {
   public class Deck
   {

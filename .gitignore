@@ -1,11 +1,10 @@
 
-BJSS/obj/BJSS.csproj.nuget.dgspec.json
+Sevens/obj/Sevens.csproj.nuget.dgspec.json
 .vs
-BJSS/bin/Debug/
-BJSS/obj/
-BJSS/obj/AireLogicCLIApp.csproj.nuget.dgspec.json
+Sevens/bin/Debug/
+Sevens/obj/
 
 
-BJSSTests/bin/Debug/
-BJSSTests/obj/
+SevensTests/bin/Debug/
+SevensTests/obj/
 

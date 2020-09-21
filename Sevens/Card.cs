@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
-namespace BJSS
+namespace Sevens
 {
   /// <summary>
   /// Enum to represent the different houses
