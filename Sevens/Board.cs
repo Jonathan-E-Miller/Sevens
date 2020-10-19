@@ -91,7 +91,7 @@ namespace Sevens
       }
     }
 
-    public List<Card> GetOptions()
+    public List<Card> GetPlayableCards()
     {
       List<Card> options = new List<Card>();
 

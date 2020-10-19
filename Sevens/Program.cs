@@ -8,24 +8,13 @@ namespace Sevens
 {
   class Program
   {
+    
     static void Main(string[] args)
     {
-      // Get the name of the Manual player
-      Console.WriteLine("Enter your name...");
-      string name = Console.ReadLine();
-      Console.Write("\n");
-
+      string name = GameUtils.GetPlayerName();
       // Create three players
-      List<Player> players = new List<Player>()
-      {
-        // create a automated smart player
-        new StandardPlayer("Standard Player"),
-        // create an automated standard player
-        new SmartPlayer("Smart Player"),
-        // create a manual player
-        new ManualPlayer(name)
-      };
-
+      List<Player> players = GameUtils.GenerateDefaultPlayers(name);
+      
       // Create a card deck and Game.
       Deck deck = new Deck();
       Game game = new Game(deck, players);
@@ -41,6 +30,6 @@ namespace Sevens
       }
     }
 
-   
+
   }
 }

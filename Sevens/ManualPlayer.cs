@@ -26,7 +26,7 @@ namespace Sevens
       // if the board is empty, we have to play a 7D if we have it.
       if (currentBoard.IsEmpty())
       {
-        if (Cards.Where(c => c.Number == Number.eSeven && c.House == House.eDiamonds).Count() == 1)
+        if (GameUtils.HasSevenOfDiamonds(Cards))
         {
           card = Cards.Where(c => c.Number == Number.eSeven && c.House == House.eDiamonds).ToList()[0];
           Cards.Remove(card);
@@ -36,44 +36,19 @@ namespace Sevens
       // The game has started...
       else
       {
-       // Get a list of all the cards we could play based on the current board state
-        List<Card> options = currentBoard.GetOptions();
+        // Get a list of all the cards we could play based on the current board state
+        List<Card> options = currentBoard.GetPlayableCards();
 
         // Go through our cards and if it is an option, add it to our matches list.
-        List<Card> matches = new List<Card>();
-        foreach (Card option in options)
-        {
-          if (Cards.Contains(option))
-          {
-            matches.Add(option);
-          }
-        }
+        List<Card> matches = MatchCards(options);
 
         // if we have a valid card we can play
         if (matches.Count != 0)
         {
-          bool cardValid = false;
-          // Keep going until we get a valid card
-          while (!cardValid)
-          {
-            // Request user input
-            Console.WriteLine("Make Your Move... (type \"cards\" to see your cards or \"matches\" to see matches)");
-            String input = Console.ReadLine();
-            
-            // Parse the input, will return null if invalid
-            Card potentialCard = ParseInput(input, matches);
-
-            // Check that the card is valid based on the current board
-            if (matches.Contains(potentialCard))
-            {
-              // card is valid so remove it from our list of Cards and break from the while loop.
-              card = potentialCard;
-              cardValid = true;
-              Cards.Remove(card);
-              break;
-            }
-          }
+          card = SelectCard(matches);
         }
+        complete = (Cards.Count == 0);
+        return card;
       }
 
       // If we do not have any cards left, we are complete.
@@ -107,7 +82,7 @@ namespace Sevens
         PrintCards(matches);
         commandReceived = true;
       }
-      
+
       // If we haven't just processed a command
       if (!commandReceived)
       {
@@ -122,7 +97,7 @@ namespace Sevens
         if (stillValid)
         {
           // Get the card number and ensure that it is valid
-          number = GetInputCardNumber(input);
+          number = GameUtils.GetInputCardNumber(input);
           if (number == Number.eInvalid)
           {
             Console.WriteLine("Invalid Input");
@@ -133,7 +108,7 @@ namespace Sevens
           House house = House.eInvalid;
           if (stillValid)
           {
-             house = GetInputHouse(input);
+            house = GameUtils.GetInputHouse(input);
             if (house == House.eInvalid)
             {
               Console.WriteLine("Invalid Input");
@@ -151,122 +126,29 @@ namespace Sevens
       return card;
     }
 
-    /// <summary>
-    /// Gets the Number of the requested card
-    /// </summary>
-    /// <param name="input">The string the user has inputted to the Console</param>
-    /// <returns>The Number Enum</returns>
-    private Number GetInputCardNumber(string input)
+    private Card SelectCard(List<Card> matches)
     {
-      Number number;
-      string numberStr = "";
-      if (input.Length == 3)
+      Card card = null;
+      bool cardValid = false;
+      // Keep going until we get a valid card
+      while (!cardValid)
       {
-        numberStr = input.Substring(0, 2);
-      }
-      else
-      {
-        numberStr = input[0].ToString();
-      }
+        // Request user input
+        Console.WriteLine("Make Your Move... (type \"cards\" to see your cards or \"matches\" to see matches)");
+        String input = Console.ReadLine();
 
-      switch (numberStr)
-      {
-        case "2":
-        case "3":
-        case "4":
-        case "5":
-        case "6":
-        case "7":
-        case "8":
-        case "9":
-        case "10":
-          {
-            int intValue = Int32.Parse(numberStr);
-            number = (Number)intValue;
-          }
-          break;
-        case "k":
-        case "K":
-          {
-            number = Number.eKing;
-          }
-          break;
-        case "q":
-        case "Q":
-          {
-            number = Number.eQueen;
-          }
-          break;
-        case "j":
-        case "J":
-          {
-            number = Number.eJack;
-          }
-          break;
-        case "a":
-        case "A":
-          {
-            number = Number.eAce;
-          }
-          break;
+        // Parse the input, will return null if invalid
+        card = ParseInput(input, matches);
 
-        default:
-          number = Number.eInvalid;
-          break;
+        // Check that the card is valid based on the current board
+        if (matches.Contains(card))
+        {
+          // card is valid so remove it from our list of Cards and break from the while loop.
+          cardValid = true;
+          Cards.Remove(card);
+        }
       }
-
-      return number;
-    }
-
-    /// <summary>
-    /// Gets the House of the requested Card
-    /// </summary>
-    /// <param name="input">The string the user has inputted to the console</param>
-    /// <returns>The House Enum</returns>
-    private House GetInputHouse(string input)
-    {
-      House house;
-      string houseStr = "";
-
-      if (input.Length == 3)
-      {
-        houseStr = input.Substring(2, 1);
-      }
-      else
-      {
-        houseStr = input[1].ToString();
-      }
-      switch (houseStr)
-      {
-        case "s":
-        case "S":
-          {
-            house = House.eSpades;
-          }
-          break;
-        case "h":
-        case "H":
-          {
-            house = House.eHearts;
-          }
-          break;
-        case "c":
-        case "C":
-          {
-            house = House.eClubs;
-          }
-          break;
-        case "d":
-        case "D":
-          {
-            house = House.eDiamonds;
-          }
-          break;
-        default:
-          house = House.eInvalid;
-          break;
-      }
-      return house;
+      return card;
     }
 
     /// <summary>

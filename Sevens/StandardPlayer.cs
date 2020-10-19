@@ -24,7 +24,7 @@ namespace Sevens
       Card card = null;
       if (currentBoard.IsEmpty())
       {
-        if (Cards.Where(c=>c.Number == Number.eSeven && c.House == House.eDiamonds).Count() == 1)
+        if (GameUtils.HasSevenOfDiamonds(Cards))
         {
           card = Cards.Where(c => c.Number == Number.eSeven && c.House == House.eDiamonds).ToList()[0];
           Cards.Remove(card);
@@ -33,17 +33,10 @@ namespace Sevens
       else
       {
         // get a list of cards I could play if I had them
-        List<Card> options = currentBoard.GetOptions();
-        
-        List<Card> matches = new List<Card>();
+        List<Card> options = currentBoard.GetPlayableCards();
 
-        foreach (Card option in options)
-        {
-          if (Cards.Contains(option))
-          {
-            matches.Add(option);
-          }
-        }
+        List<Card> matches = MatchCards(options);
+
         if (matches.Count > 0)
         {
           int index = _random.Next(0, matches.Count);

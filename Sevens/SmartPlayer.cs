@@ -27,7 +27,7 @@ namespace Sevens
       // if the board is empty, we have to play 7D
       if (currentBoard.IsEmpty())
       {
-        if (Cards.Where(c => c.Number == Number.eSeven && c.House == House.eDiamonds).Count() == 1)
+        if (GameUtils.HasSevenOfDiamonds(Cards))
         {
           card = Cards.Where(c => c.Number == Number.eSeven && c.House == House.eDiamonds).ToList()[0];
           Cards.Remove(card);
@@ -36,38 +36,38 @@ namespace Sevens
       else
       {
         // Get a list of cards I could play if I had them
-        List<Card> options = currentBoard.GetOptions();
+        List<Card> allPlayableCards = currentBoard.GetPlayableCards();
 
         // If we have an option card in our personal deck, then add to matches list
-        List<Card> matches = new List<Card>();
-        foreach (Card option in options)
+        List<Card> playable = new List<Card>();
+        foreach (Card option in allPlayableCards)
         {
           if (Cards.Contains(option))
           {
-            matches.Add(option);
+            playable.Add(option);
           }
         }
 
         // if we have a card to play
-        if (matches.Count > 0)
+        if (playable.Count > 0)
         {
           List<Card> toKeep = new List<Card>();
-          for (int i = matches.Count-1; i >= 0; i--)
+          for (int i = playable.Count-1; i >= 0; i--)
           {
             // If we have a seven but not many other cards in that house, then save it to delay other players.
-            if ( (matches[i].Number == Number.eSeven) && CheckCount(matches[i]) >= 3)
+            if ( (playable[i].Number == Number.eSeven) && CheckCount(playable[i]) >= 3)
             {
-              toKeep.Add(matches[i]);
-              matches.RemoveAt(i);
+              toKeep.Add(playable[i]);
+              playable.RemoveAt(i);
             }
           }
 
           // Use matches first.
-          if (matches.Count > 0)
+          if (playable.Count > 0)
           {
-            int index = _random.Next(0, matches.Count);
+            int index = _random.Next(0, playable.Count);
 
-            card = matches[index];
+            card = playable[index];
             Cards.Remove(card);
           }
           else

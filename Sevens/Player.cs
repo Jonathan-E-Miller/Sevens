@@ -44,5 +44,19 @@ namespace Sevens
       _output = "";
       return toReturn;
     }
+
+    protected List<Card> MatchCards(List<Card> allPlayableCards)
+    {
+      List<Card> matches = new List<Card>();
+
+      foreach (Card option in allPlayableCards)
+      {
+        if (Cards.Contains(option))
+        {
+          matches.Add(option);
+        }
+      }
+      return matches;
+    }
   }
 }

@@ -7,4 +7,6 @@ Sevens/obj/
 
 SevensTests/bin/Debug/
 SevensTests/obj/
+SevensTests/bin
 
+*.pdb
